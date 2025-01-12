@@ -1,0 +1,46 @@
+<!-- <!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>登录页</title>  
+</head>  
+<body>  
+    <h1>登录</h1>  
+    <form id="loginForm">  
+        <input type="text" placeholder="用户名" id="username" required />  
+        <input type="password" placeholder="密码" id="password" required />  
+        
+        <label for="captcha">验证码：</label>  
+        <img src="/captcha" alt="验证码" id="captcha-img" />  
+        <input type="text" id="captcha" placeholder="输入验证码" required />  
+        
+        <button type="submit">登录</button>  
+    </form>  
+    <div id="message"></div>  
+
+    <script>  
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {  
+            e.preventDefault();  
+            const username = document.getElementById('username').value;  
+            const password = document.getElementById('password').value;  
+            const captcha = document.getElementById('captcha').value;  
+
+            const response = await fetch('/login', {  
+                method: 'POST',  
+                headers: { 'Content-Type': 'application/json' },  
+                body: JSON.stringify({ username, password, captcha })  // 包含验证码  
+            });  
+
+            if (response.ok) {  
+                const { token } = await response.json();  
+                // 将 token 存储在 localStorage 或 sessionStorage  
+                localStorage.setItem('token', token);  
+                window.location.href = '/homepage'; // 登录成功后跳转到首页  
+            } else {  
+                document.getElementById('message').innerText = '登录失败';  
+            }  
+        });  
+    </script>  
+</body>  
+</html> -->
